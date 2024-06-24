@@ -1,0 +1,47 @@
+Álgebra booleana é a categoria da álgebra em que os valores das variáveis são os valores de verdade, verdadeiro e falso, geralmente denotados por 1 e 0, respectivamente.
+
+\subsubsection{Operações básicas}
+A álgebra booleana possui apenas três operações básicas: conjunção, disjunção e negação, expressas pelos operadores binários correspondentes E ($\land$) e OU ($\lor$) e pelo operador unário NÃO ($\neg$), coletivamente chamados de operadores booleanos.
+
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        Operador lógico & Operador & Notação & Definição\\
+        \hline
+        Conjunção & AND & $x \land y$  & $x \land y = 1 \textnormal{ se } x=y=1,x \land y = 0 \textnormal{ caso contrário}$ \\
+        Disjunção & OR & $x \lor y$ & $x \lor y = 0 \textnormal{ se } x=y=0,x \land y = 1 \textnormal{ caso contrário}$  \\
+        Negeação & NOT & $\neg x$ & $\neg x = 0 \textnormal{ se } x=1,\neg x  = 1 \textnormal{ se }x=0$ 
+    \end{tabular}
+    
+\end{center}
+
+\subsubsection{Operações secundárias}
+Operações compostas a partir de operações básicas incluem, dentro outras, as seguintes:
+\begin{center}
+    \begin{tabular}{c|c|c|c|c}
+        Operador lógico & Operador & Notação & Definição & Equivalência\\
+        \hline
+        Condicional material & $\rightarrow$ & $x \rightarrow y$ & $x \rightarrow y = 0 \textnormal{ se } x = 1 \textnormal{ e } y = 0,x \rightarrow y = 1 \textnormal{ caso contrário}$ & $\neg x \lor y$ \\
+        Bicondicional material & $\Leftrightarrow$ & $x \Leftrightarrow y$ &$x \Leftrightarrow y = 1 \textnormal{ se } x=y,x \Leftrightarrow y = 0 \textnormal{ caso contrário}$ & $(x \lor \neg y) \land (\neg x \lor y)$\\
+        OR Exclusivo & XOR & $x \oplus y$  &$x \oplus y = 1 \textnormal{ se } x\neq y,x \oplus y = 0 \textnormal{ caso contrário}$ & $(x \lor y) \land (\neg x \lor \neg y)$
+    \end{tabular}
+\end{center}
+
+\subsubsection{Leis}
+\begin{multicols}{2}
+    \begin{itemize}
+        \item Associatividade:
+        $$x\land(y \land z) = (x\land y) \land z $$$$ x\lor(y \lor z) = (x\lor y) \lor z$$
+        \item Comutatividade:
+        $$x\land y = y \land x $$ $$x\lor y = y \lor x$$
+        \item Distributividade:
+        $$x\land(y \lor z) = (x\land y) \lor (x \land z) $$$$ x\lor(y \land z) = (x\lor y) \land (x \lor z)$$
+        \item Identidade: $x\lor 0 = x\land1=x$
+        \item Aniquilador: $$x\lor 1 = 1 $$$$ x\land 0 =0$$
+        \item Idempotência: $x\land x = x\lor x = x$
+        \item Absorção: $x\land(x\lor y) = x \lor(x \land y) = x$    
+        \item Complemento: $$x\land \neg x = 0 $$$$ x \lor \neg x = 1$$
+        \item Negação dupla: $\neg(\neg x)=x$
+        \item De Morgan: $$\neg x \land \neg y = \neg(x \lor y) $$$$ \neg x \lor \neg y = \neg(x \land y)$$
+    \end{itemize}
+    
+\end{multicols}

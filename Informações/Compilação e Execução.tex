@@ -1,0 +1,17 @@
+\subsubsection*{Comandos de compilação}
+\begin{itemize}
+    \item C++: \begin{verbatim}
+        g++ -std=c++17 -g3 -fsanitize=address -O2 -Wall 
+            -Wextra -Wconversion -Wshadow -o <nomeDoExecutável> <nomeDoArquivo>.cpp
+    \end{verbatim}
+    \item Java: \verb|javac <nomeDoArquivo>.java|.
+    \item Haskell: \verb|ghc -o <nomeDoExecutável> <nomeDoArquivo>.hs|.
+\end{itemize}
+
+\subsubsection*{Comandos de execução}
+\begin{itemize}
+    \item C++:\verb|./<nomeDoExecutável>|.
+    \item Java: \verb|java -Xms1024m -Xmx1024m -Xss20m <nomeDoArquivo>|.
+    \item Python: \verb|python3 <nomeDoArquivo>.py|.
+    \item Haskell: \verb|./<nomeDoExecutável>|.
+\end{itemize}

@@ -1,0 +1,51 @@
+\begin{multicols}{2}
+    \subsubsection*{Python}
+    
+    \begin{lstlisting}[language=Python]
+        import random
+        import itertools
+    
+        #randint: retorna um numero aleatorio x tq. a <= x <= b
+        lista = [random.randint(1,100) for i in range(101)]
+    
+        #shuffle: embaralha uma sequencia
+        random.shuffle(lista)
+    
+        #sample: retorna uma lista de k elementos unicos escolhidos de uma sequencia
+        amostra = random.sample(lista, k = 10)
+    
+        lista2 = [1,2,3,4,5]
+        #permutations: iterable que retorna permutacoes de tamanho r
+        permutacoes = [perm for perm in itertools.permutations(lista2, 2)]
+        
+        #combinations: iterable que retorna combinacoes de tamanho r (ordenado)
+        #combinations_with_replacement: combinations() com elementos repetidos
+        combinacoes = [comb for comb in itertools.combinations(lista2, 2)]
+    \end{lstlisting}
+    
+    \subsubsection*{C++}
+    
+    \begin{lstlisting}[language=c++]
+        mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); // mt19937_64
+        uniform_int_distribution<int> distribution(1,n);
+    
+        num = distribution(rng); // num no range [1, n]
+        shuffle(vec.begin(), vec.end(), rng); // shuffle
+    
+        // permutacoes 
+        do {
+            // codigo
+        } while(next_permutation(vec.begin(), vec.end()))
+    
+        using ull = unsigned long long;
+        ull mix(ull o){
+            o+=0x9e3779b97f4a7c15;
+            o=(o^(o>>30))*0xbf58476d1ce4e5b9;
+            o=(o^(o>>27))*0x94d049bb133111eb;
+            return o^(o>>31);
+        }
+    
+        ull hash(pii a) {return mix(a.first ^ mix(a.second));}
+    \end{lstlisting}
+    
+\end{multicols}

@@ -56,9 +56,26 @@ def get_dir():
 
 
 def create_notebook(section, blocked):
-    path = 'C++'
     aux = ''
     with open('notebook.tex', 'a') as texfile:
+        # Adicionando a parte de Informações
+        path = 'Informações'
+        aux += '\\section{%s}\n' % path 
+
+        for file in sorted(os.listdir(path)):
+            name, ext = os.path.splitext(file)
+
+            aux += '\\subsection{%s}\n' % name
+
+            with open(os.path.join(path,file), 'r') as txt:
+                aux += txt.read() + '\n'
+
+                txt.close()
+
+        aux += '\\newpage\n'
+
+        path = 'C++'  
+        aux += '\\begin{multicols}{2}\n'  
 
         for (item, subsection) in section:
             aux += '\\section{%s}\n' % item

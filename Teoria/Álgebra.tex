@@ -1,0 +1,110 @@
+\subsubsection{Fundamentos}
+\paragraph{Maior Divisor Comum (MDC).} Dados dois inteiros não-negativos $a$ e $b$, o maior número que é um divisor de tanto de $a$ quanto de $b$ é chamado de MDC.
+$$\gcd(a,b)=max\{d > 0 : (d|a) \land (d|b)\}$$
+
+\paragraph{Menor Múltiplo Comum (MMC).} Dados dois inteiros não-negativos $a$ e $b$, o menor número que é múltiplo de tanto de $a$ quanto de $b$ é chamado de MMC.
+$$lcm(a,b)=\frac{ab}{\gcd(a,b)}$$
+
+\paragraph{Equação Diofantina Linear.} Um Equação Diofantina Linear é uma equação de forma geral:
+$$ax +by=c,$$
+onde $a$,$b$,$c$ são inteiros dados, e $x$,$y$ são inteiros desconhecidos.
+
+Para achar uma solução de uma equação Diofantina com duas incógnitas, podemos utilizar o algoritmo de Euclides. Quando aplicamos o algoritmo em $a$ e $b$, podemos encontrar seu MDC $d$ e dois números $x_d$ e $y_d$ tal que:
+$$a\cdot x_d+b\cdot y_d = d.$$
+
+Se $c$ é divisível por $d = \gcd(a,b)$, logo a equação Diofantina tem solução, caso contrário ela não tem nenhuma solução. 
+
+Supondo que $c$ é divisível por $g$, obtemos:
+$$a\cdot(x_d\cdot\frac{c}{d})+b\cdot(y_d\cdot\frac{c}{d})=c.$$
+
+Logo uma das soluções da equação Diofantina é:
+$$x_0 = x_d\cdot\frac{c}{d}$$ $$y_0=y_d\cdot\frac{c}{d}.$$
+
+A partir de uma solução $(x_0,y_0)$, podemos obter todas as soluções. São soluções da equação Diofantina todos os números da forma:
+$$x = x_0+k\cdot\frac{b}{d}$$ $$y = y_0-k\cdot\frac{a}{d}.$$
+
+\paragraph{Números de Fibonacci.} A sequência de Fibonacci é definida da seguinte forma: 
+$$F_n = \begin{cases}
+            0,\textnormal{se } n=0 \\
+            1,\textnormal{se } n=1 \\
+            F_{n-1}+F_{n-2},\textnormal{caso contrário}
+        \end{cases}$$
+
+Os 11 primerios números da sequência são:
+\begin{center}
+    \begin{tabular}{c|c c c c c c c c c c c}
+        $n$ & 0 &1&2&3&4&5&6&7&8&9&10\\
+        \hline
+        $F_n$&0&1&1&2&3&5&8&13&21&34&55
+    \end{tabular}
+    
+\end{center}
+
+\textbf{Propriedades.}
+\begin{itemize}
+    \item Identidade de Cassini: $F_{n-1}F_{n+1}-{F_n}^2 = (-1)^n$
+    \item Regra da adição: $F_{n+k} = F_kF_{n+1}+F_{k-1}F_n$
+    \item Identidade do MDC: $\gcd(F_n,F_m)=F_{\gcd(n,m)}$
+\end{itemize}
+
+\textbf{Fórmulas para calcular o n-ésimo número de Fibonacci.}
+
+\begin{itemize}
+    \item Fórmula de Binet:
+    $$F_n = \frac{(1+\sqrt{5})^n - (1-\sqrt{5})^n}{2^n\sqrt{5}} 
+    \approx \begin{bmatrix} 
+                \frac{(1+\sqrt{5})^n}{2^n\sqrt{5}}
+            \end{bmatrix}$$
+    \item Forma matricial: 
+    $$\begin{vmatrix}
+        1 & 1 \\
+        1 & 0
+    \end{vmatrix}^n 
+    = 
+    \begin{vmatrix}
+       F_{n+1} & F_{n} \\
+       F_{n} & F_{n-1} 
+    \end{vmatrix}$$
+\end{itemize}
+
+\subsubsection{Funções}
+\paragraph{Função Totiente de Euler.} A função-phi $\phi(n)$ conta o número de inteiros entre 1 e $n$ incluso, nos quais são coprimos com $n$. Dois números são coprimos se o MDC deles é igual a 1.
+
+\textbf{Propriedades.}
+\begin{multicols}{2}
+    \begin{itemize}
+        \item Se $p$ é primo, logo o $\gcd(p,q) = 1$ para todo $1\leq q < p$. Logo,
+        $$\phi(p) = p-1$$
+        \item Se $p$ é primo e $k \ge 1$, então há exatos $p^k/p$ números entre 1 e $p^k$ que são divisíveis por $p$. Portanto,
+        $$\phi(p^k) = p^k - p^{k-1} = p^{k-1}(p-1)$$
+        \item Se $a$ e $b$ forem coprimos ou não, então:
+        $$\phi(ab)=\phi(a)\cdot \phi(b) \cdot \frac{d}{\phi(d)},\quad d = \gcd(a,b)$$
+        \item Fórmula do produto de Euler:
+        $$\phi(n)=n\prod_{p|n}(1-\frac{1}{p})$$
+        \item Soma dos divisores:
+        $$n = \sum_{d|n}\phi(d)$$
+    \end{itemize}
+    
+\end{multicols}
+
+\textbf{Aplicações:}
+\begin{itemize}
+    \item Teorema de Euler: Seja $m$ um inteiro positivo e $a$ um inteiro coprimo com $m$, então:
+    $$a^{\phi(m)} \equiv 1 (\mod m)$$
+    $$a^n \equiv a^{n \mod \phi(m)} (\mod m)$$
+    
+    \item Generalização do Teorema de Euler: Seja $x$,$m$ inteiros positivos e $n \ge \log_2m$,
+    $$x^n \equiv x^{\phi(m)+[n \mod \phi(m)]}(\mod m)$$
+    
+    \item Teoria dos Grupos: $\phi(n)$ é a ordem de um grupo multiplicativo mod n $(\mathbb{Z}/n\mathbb{Z})^{\times}$, que é o grupo dos elementos com inverso multiplicativo (aqueles coprimos com $n$). A ordem multiplicativa de um elemento $a$ mod $m$ ($\textnormal{ord}_m(a)$), na qual também é o tamanho do subgrupo gerado por $a$, é o menor $k > 0$ tal que $a^k \equiv 1 (\mod m)$. Se a ordem multiplicativa de $a$ é $\phi(m)$, o maior possível, então $a$ é \textbf{raiz primitiva} e o grupo é cíclico por definição.
+    
+\end{itemize}
+
+\paragraph{Número de Divisores.} Se a fatoração prima de $n$ é $p_1^{e_1}\cdot p_2^{e_2}\dots  p_k^{e_k}$, onde $p_i$ são números primos distintos, então o número de divisores é dado por:
+$$d(n) = (e_1+1)\cdot(e_2+1) \dots (e_k+1)$$
+
+\paragraph{Soma dos Divisores.} Para $n = p_1^{e_1}\cdot p_2^{e_2}\dots p_k^{e_k}$ temos a seguinte fórmula:
+$$\sigma(n) = \frac{p_1^{e_1+1}-1}{p_1-1} \cdot \frac{p_2^{e_2+1}-1}{p_2-1}  \dots  \frac{p_k^{e_k+1}-1}{p_k-1}$$
+
+\subsubsection{Aritmética Modular}
+[...]
